@@ -1,10 +1,16 @@
 import React from "react";
+import Button from "./Button";
 
-function CategoryFilter() {
+function CategoryFilter({ categories, activeCategory, onFilter }) {
+
+  const categoryList = categories.map(category => (
+    <Button key={category} category={category} onFilter={onFilter} activeCategory={activeCategory} />
+  ))
+
   return (
     <div className="categories">
       <h5>Category filters</h5>
-      {/* render <button> elements for each category here */}
+      {categoryList}
     </div>
   );
 }

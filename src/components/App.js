@@ -11,17 +11,22 @@ function App() {
 
   const [tasks, setTasks] = useState(TASKS);
   const [categories, setCategories] = useState(CATEGORIES);
+  const [activeCategory, setActiveCategory] = useState("All");
 
   function handleDelete(target) {
     setTasks(tasks.filter(task => task.text !== target))
   }
 
+  function handleCategoryChange(category) {
+    setActiveCategory(category);    
+  }
+
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter />
+      <CategoryFilter categories={categories} activeCategory={activeCategory} onFilter={handleCategoryChange} />
       <NewTaskForm />
-      <TaskList tasks={tasks} onDelete={handleDelete} />
+      <TaskList tasks={tasks} onDelete={handleDelete} activeCategory={activeCategory} />
     </div>
   );
 }
