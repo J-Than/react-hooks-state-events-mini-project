@@ -4,7 +4,7 @@ import Button from "./Button";
 function CategoryFilter({ categories, activeCategory, onFilter }) {
 
   const categoryList = categories.map(category => (
-    <Button key={category} category={category} onFilter={onFilter} activeCategory={activeCategory} />
+    <Button key={`btn_${category}`} category={category} onFilter={onFilter} activeCategory={activeCategory} />
   ))
 
   return (
